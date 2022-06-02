@@ -37,12 +37,6 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker run -d -p 8088:80 --name cats $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-    - name: Build, test, tag, and push dogs image to Amazon ECR
-      env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: catsndogsapp
-        IMAGE_TAG: dogs-v0.1
-      run: |
         cd dogs
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker run -d -p 8080:80 --name dogs $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
