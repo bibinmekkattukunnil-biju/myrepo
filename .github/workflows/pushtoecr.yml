@@ -37,6 +37,7 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker run -d -p 8088:80 --name cats $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        cd ..
         cd dogs
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker run -d -p 8080:80 --name dogs $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
