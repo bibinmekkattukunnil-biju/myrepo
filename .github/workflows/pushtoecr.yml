@@ -44,6 +44,6 @@ jobs:
         IMAGE_TAG: dogs-v0.1
       run: |
         cd dogs
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG 
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker run -d -p 8080:80 --name dogs $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
