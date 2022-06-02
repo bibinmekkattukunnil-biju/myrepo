@@ -30,15 +30,16 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: catsndogsapp
-        IMAGE_TAG: cats-v0.1
+        IMAGE_TAG1: cats-v0.1
+        IMAGE_TAG2 : dogs-v0.1
       run: |
         cd cats
         ls -ltra
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        docker run -d -p 8088:80 --name cats $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG1 .
+        docker run -d -p 8088:80 --name cats $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG1
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG1
         cd ..
         cd dogs
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        docker run -d -p 8080:80 --name dogs $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG2 .
+        docker run -d -p 8080:80 --name dogs $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG2
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG2
