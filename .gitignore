@@ -35,3 +35,6 @@ id_dsa.pub
 id_dsa
 *.pem
 *.key
+
+AG-1-catsndogs-dev
+AG-1-catsndogs-dev.pub
